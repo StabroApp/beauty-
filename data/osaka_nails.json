@@ -1,0 +1,152 @@
+[
+  {
+    "id": "nail_osaka_1",
+    "name": "Umeda Beauty Nail 1",
+    "name_japanese": "UmedaビューティーNail1",
+    "category": "nail",
+    "location": "osaka",
+    "area": "Umeda",
+    "address": "1-2-3 Umeda, Osaka",
+    "address_japanese": "OsakaUmeda1-2-3",
+    "phone": "03-1000-2000",
+    "rating": 4.0,
+    "review_count": 50,
+    "price_range": "¥3000 - ¥8000",
+    "services": [
+      "Gel Nails",
+      "Nail Art",
+      "Manicure"
+    ],
+    "description": "A premium nail in Umeda, offering top-quality services with experienced staff.",
+    "description_japanese": "Umedaにあるプレミアムnailサロン。経験豊富なスタッフが最高品質のサービスを提供します。",
+    "opening_hours": "10:00 - 20:00",
+    "website": "https://beauty.hotpepper.jp/slnH000100000/",
+    "features": [
+      "English speaking staff",
+      "Credit card accepted",
+      "Online booking available",
+      "Private rooms available"
+    ],
+    "access": "2 min walk from Umeda Station"
+  },
+  {
+    "id": "nail_osaka_2",
+    "name": "Namba Beauty Nail 2",
+    "name_japanese": "NambaビューティーNail2",
+    "category": "nail",
+    "location": "osaka",
+    "area": "Namba",
+    "address": "2-3-4 Namba, Osaka",
+    "address_japanese": "OsakaNamba2-3-4",
+    "phone": "03-1111-2222",
+    "rating": 4.2,
+    "review_count": 75,
+    "price_range": "¥4000 - ¥10000",
+    "services": [
+      "Gel Nails",
+      "Nail Art",
+      "Manicure"
+    ],
+    "description": "A premium nail in Namba, offering top-quality services with experienced staff.",
+    "description_japanese": "Nambaにあるプレミアムnailサロン。経験豊富なスタッフが最高品質のサービスを提供します。",
+    "opening_hours": "10:00 - 20:00",
+    "website": "https://beauty.hotpepper.jp/slnH000100001/",
+    "features": [
+      "English speaking staff",
+      "Credit card accepted",
+      "Online booking available",
+      "Private rooms available"
+    ],
+    "access": "3 min walk from Namba Station"
+  },
+  {
+    "id": "nail_osaka_3",
+    "name": "Shinsaibashi Beauty Nail 3",
+    "name_japanese": "ShinsaibashiビューティーNail3",
+    "category": "nail",
+    "location": "osaka",
+    "area": "Shinsaibashi",
+    "address": "3-4-5 Shinsaibashi, Osaka",
+    "address_japanese": "OsakaShinsaibashi3-4-5",
+    "phone": "03-1222-2444",
+    "rating": 4.4,
+    "review_count": 100,
+    "price_range": "¥5000 - ¥12000",
+    "services": [
+      "Gel Nails",
+      "Nail Art",
+      "Manicure"
+    ],
+    "description": "A premium nail in Shinsaibashi, offering top-quality services with experienced staff.",
+    "description_japanese": "Shinsaibashiにあるプレミアムnailサロン。経験豊富なスタッフが最高品質のサービスを提供します。",
+    "opening_hours": "10:00 - 20:00",
+    "website": "https://beauty.hotpepper.jp/slnH000100002/",
+    "features": [
+      "English speaking staff",
+      "Credit card accepted",
+      "Online booking available",
+      "Private rooms available"
+    ],
+    "access": "4 min walk from Shinsaibashi Station"
+  },
+  {
+    "id": "nail_osaka_4",
+    "name": "Tennoji Beauty Nail 4",
+    "name_japanese": "TennojiビューティーNail4",
+    "category": "nail",
+    "location": "osaka",
+    "area": "Tennoji",
+    "address": "4-5-6 Tennoji, Osaka",
+    "address_japanese": "OsakaTennoji4-5-6",
+    "phone": "03-1333-2666",
+    "rating": 4.6,
+    "review_count": 125,
+    "price_range": "¥6000 - ¥14000",
+    "services": [
+      "Gel Nails",
+      "Nail Art",
+      "Manicure"
+    ],
+    "description": "A premium nail in Tennoji, offering top-quality services with experienced staff.",
+    "description_japanese": "Tennojiにあるプレミアムnailサロン。経験豊富なスタッフが最高品質のサービスを提供します。",
+    "opening_hours": "10:00 - 20:00",
+    "website": "https://beauty.hotpepper.jp/slnH000100003/",
+    "features": [
+      "English speaking staff",
+      "Credit card accepted",
+      "Online booking available",
+      "Private rooms available"
+    ],
+    "access": "5 min walk from Tennoji Station"
+  },
+  {
+    "id": "nail_osaka_5",
+    "name": "Kyobashi Beauty Nail 5",
+    "name_japanese": "KyobashiビューティーNail5",
+    "category": "nail",
+    "location": "osaka",
+    "area": "Kyobashi",
+    "address": "5-6-7 Kyobashi, Osaka",
+    "address_japanese": "OsakaKyobashi5-6-7",
+    "phone": "03-1444-2888",
+    "rating": 4.8,
+    "review_count": 150,
+    "price_range": "¥7000 - ¥16000",
+    "services": [
+      "Gel Nails",
+      "Nail Art",
+      "Manicure"
+    ],
+    "description": "A premium nail in Kyobashi, offering top-quality services with experienced staff.",
+    "description_japanese": "Kyobashiにあるプレミアムnailサロン。経験豊富なスタッフが最高品質のサービスを提供します。",
+    "opening_hours": "10:00 - 20:00",
+    "website": "https://beauty.hotpepper.jp/slnH000100004/",
+    "features": [
+      "English speaking staff",
+      "Credit card accepted",
+      "Online booking available",
+      "Private rooms available"
+    ],
+    "access": "6 min walk from Kyobashi Station"
+  }
+]

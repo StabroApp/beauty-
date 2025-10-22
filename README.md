@@ -8,6 +8,23 @@ Through an **AI Beauty Advisor**, users can find, compare, and understand Japan'
 
 > "To make Japanese beauty transparent and accessible to the world."
 
+## ✨ Quick Start
+
+Try the system in 3 simple steps:
+
+```bash
+# 1. Install (core dependencies only)
+pip install beautifulsoup4 requests python-dotenv
+
+# 2. Run the demo
+python demo.py
+
+# 3. Start the interactive advisor
+python beauty_advisor.py
+```
+
+That's it! The system works out of the box with sample data and no API keys required.
+
 ## Features
 
 - 🔍 **Web Scraping**: Automatically scrape clinic data from beauty.hotpepper.jp
@@ -113,6 +130,71 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## License
 
 MIT License
+
+## Disclaimer
+
+This project is for educational and informational purposes. Always verify clinic information and booking details directly with the clinics.
+
+## 📚 Documentation
+
+- **[USAGE.md](USAGE.md)** - Comprehensive usage guide with examples
+- **[CONTRIBUTING.md](CONTRIBUTING.md)** - How to contribute to the project
+- **[examples.py](examples.py)** - 8 example use cases
+- **[demo.py](demo.py)** - Full system demonstration
+
+## 🧪 Testing
+
+Run the test suite:
+
+```bash
+python tests.py
+```
+
+All tests should pass, verifying:
+- Scraper functionality
+- Data processing
+- AI advisor capabilities
+- Translation features
+
+## 🎯 Example Usage
+
+### CLI Commands
+
+```bash
+# Scrape clinics from different locations
+python scraper/hotpepper_scraper.py --location tokyo --category salon
+python scraper/hotpepper_scraper.py --location osaka --category nail
+
+# Run examples
+python examples.py
+
+# Start interactive advisor
+python beauty_advisor.py
+```
+
+### In the Interactive Advisor
+
+```
+You: Find me the best salons in Shibuya
+You: I'm looking for nail services in Osaka
+You: Show me clinics with English-speaking staff
+You: /top          # Show top-rated clinics
+You: /stats         # Show statistics
+You: /help          # Show all commands
+```
+
+## 🚀 Advanced Features
+
+For full AI capabilities, install optional dependencies:
+
+```bash
+pip install langchain langchain-openai openai chromadb deep-translator
+```
+
+Then set your OpenAI API key in `.env`:
+```
+OPENAI_API_KEY=your_key_here
+```
 
 ## Disclaimer
 
