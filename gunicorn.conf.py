@@ -7,7 +7,7 @@ threads = int(os.getenv("THREADS", 2))
 worker_class = "gthread"
 
 # Bind configuration
-bind = f"0.0.0.0:{os.getenv('PORT', 8080)}"
+bind = f"0.0.0.0:{int(os.getenv('PORT', 8080))}"
 
 # Logging
 accesslog = "-"
