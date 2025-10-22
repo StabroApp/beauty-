@@ -9,6 +9,11 @@ import time
 import argparse
 from typing import List, Dict, Optional
 import os
+import logging
+
+# Setup logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 
 class HotPepperScraper:
@@ -16,8 +21,29 @@ class HotPepperScraper:
     
     BASE_URL = "https://beauty.hotpepper.jp"
     
-    def __init__(self):
+    def __init__(self, use_gcs: bool = False):
+        """
+        Initialize the scraper
+        
+        Args:
+            use_gcs: Whether to use Google Cloud Storage for data persistence
+        """
         self.clinics = []
+        self.use_gcs = use_gcs
+        self.gcs_storage = None
+        
+        # Initialize GCS if requested
+        if use_gcs:
+            try:
+                from scraper.gcs_storage import GCSStorage
+                self.gcs_storage = GCSStorage()
+                logger.info("GCS storage initialized successfully")
+            except ImportError:
+                logger.warning("google-cloud-storage not available. Falling back to local storage.")
+                self.use_gcs = False
+            except Exception as e:
+                logger.warning(f"Failed to initialize GCS: {e}. Falling back to local storage.")
+                self.use_gcs = False
     
     def scrape_search_page(self, location: str = "tokyo", category: str = "salon", max_pages: int = 3) -> List[Dict]:
         """
@@ -94,16 +120,40 @@ class HotPepperScraper:
         return sample_clinics
     
     def save_to_json(self, filename: str = "clinics.json"):
-        """Save scraped data to JSON file"""
+        """
+        Save scraped data to JSON file and optionally to GCS
+        
+        Args:
+            filename: Name of the file to save
+            
+        Returns:
+            Path to the saved file (local or GCS path)
+        """
         data_dir = os.path.join(os.path.dirname(__file__), "..", "data")
         os.makedirs(data_dir, exist_ok=True)
         
         filepath = os.path.join(data_dir, filename)
         
+        # Always save locally first
         with open(filepath, 'w', encoding='utf-8') as f:
             json.dump(self.clinics, f, ensure_ascii=False, indent=2)
         
         print(f"Saved {len(self.clinics)} clinics to {filepath}")
+        
+        # Upload to GCS if enabled
+        if self.use_gcs and self.gcs_storage:
+            try:
+                gcs_path = self.gcs_storage.upload_json(
+                    self.clinics,
+                    filename,
+                    folder="scraped_data"
+                )
+                print(f"Uploaded to GCS: {gcs_path}")
+                return gcs_path
+            except Exception as e:
+                logger.error(f"Failed to upload to GCS: {e}")
+                print(f"Warning: GCS upload failed, but local file saved successfully")
+        
         return filepath
     
     def get_clinic_details(self, clinic_url: str) -> Optional[Dict]:
@@ -139,10 +189,12 @@ def main():
                        help='Maximum number of pages to scrape')
     parser.add_argument('--output', type=str, default='clinics.json',
                        help='Output filename')
+    parser.add_argument('--use-gcs', action='store_true',
+                       help='Upload data to Google Cloud Storage')
     
     args = parser.parse_args()
     
-    scraper = HotPepperScraper()
+    scraper = HotPepperScraper(use_gcs=args.use_gcs)
     clinics = scraper.scrape_search_page(
         location=args.location,
         category=args.category,

@@ -64,14 +64,99 @@ Create a `.env` file with the following:
 
 ```
 OPENAI_API_KEY=your_openai_api_key_here
+
+# Google Cloud Storage (Optional)
+GCS_BUCKET_NAME=your_gcs_bucket_name_here
+GCP_PROJECT_ID=your_gcp_project_id_here
+GCS_LOCATION=us-east1
 ```
+
+### Google Cloud Storage Setup (Optional)
+
+The project supports Google Cloud Storage for data persistence, which is useful for:
+- Centralized data storage accessible from multiple machines
+- Automatic backups of scraped data
+- Efficient use of Google Cloud's free tier (5GB regional storage)
+
+#### Quick Setup:
+
+1. **Create a GCP Project** (if you don't have one):
+   - Go to [Google Cloud Console](https://console.cloud.google.com/)
+   - Create a new project or select an existing one
+
+2. **Enable Cloud Storage API**:
+   ```bash
+   gcloud services enable storage-api.googleapis.com
+   ```
+
+3. **Create a Service Account** (for authentication):
+   ```bash
+   gcloud iam service-accounts create beauty-scraper \
+       --display-name="Beauty Scraper Service Account"
+   ```
+
+4. **Create and download credentials**:
+   ```bash
+   gcloud iam service-accounts keys create ~/beauty-scraper-key.json \
+       --iam-account=beauty-scraper@YOUR_PROJECT_ID.iam.gserviceaccount.com
+   ```
+
+5. **Set environment variables**:
+   ```bash
+   export GOOGLE_APPLICATION_CREDENTIALS=~/beauty-scraper-key.json
+   export GCS_BUCKET_NAME=beauty-clinic-data
+   export GCP_PROJECT_ID=your-project-id
+   ```
+
+6. **The bucket will be created automatically** when you first run the scraper with `--use-gcs` flag.
+
+#### Free Tier Optimization:
+
+Google Cloud Storage offers:
+- **5GB of regional storage** per month (free)
+- **5,000 Class A operations** (uploads, list, create bucket)
+- **50,000 Class B operations** (downloads, get)
+
+To stay within free tier:
+- Use regional storage (us-east1, us-west1, or us-central1)
+- Store JSON data (highly compressible)
+- Implement automatic cleanup of old data (built-in feature)
 
 ## Usage
 
 ### Scrape Beauty Clinic Data
 
 ```bash
+# Basic scraping (saves locally)
 python scraper/hotpepper_scraper.py --location tokyo --category salon
+
+# With Google Cloud Storage integration
+python scraper/hotpepper_scraper.py --location tokyo --category salon --use-gcs
+```
+
+### Google Cloud Storage Operations
+
+```python
+from scraper.gcs_storage import GCSStorage
+
+# Initialize storage
+storage = GCSStorage()
+
+# Upload data
+storage.upload_json(clinic_data, "tokyo_salons.json", folder="clinics")
+
+# Download data
+data = storage.download_json("clinics/tokyo_salons.json")
+
+# List files
+files = storage.list_files(prefix="clinics", suffix=".json")
+
+# Delete old data (older than 30 days)
+deleted_count = storage.delete_old_files(prefix="clinics", days_old=30)
+
+# Get bucket information
+info = storage.get_bucket_info()
+print(f"Total storage used: {info['total_size_mb']} MB")
 ```
 
 ### Run the AI Beauty Advisor
@@ -93,7 +178,8 @@ Then interact with the advisor:
 beauty-/
 ├── scraper/              # Web scraping modules
 │   ├── hotpepper_scraper.py
-│   └── data_processor.py
+│   ├── data_processor.py
+│   └── gcs_storage.py    # Google Cloud Storage integration
 ├── advisor/              # AI Beauty Advisor
 │   ├── advisor_agent.py
 │   ├── translator.py
