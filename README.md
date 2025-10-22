@@ -25,6 +25,27 @@ python beauty_advisor.py
 
 That's it! The system works out of the box with sample data and no API keys required.
 
+### Running as a Web Service
+
+The application can also run as a web API using Flask:
+
+```bash
+# Install Flask
+pip install flask
+
+# Run the web application
+python main.py
+```
+
+The API will be available at http://localhost:8080 with the following endpoints:
+- `GET /` - API information
+- `GET /health` - Health check
+- `POST /api/chat` - Chat with AI advisor
+- `GET /api/clinics` - Get all clinics
+- `GET /api/clinics/search?q=query` - Search clinics
+- `GET /api/clinics/top?limit=10` - Get top-rated clinics
+- `GET /api/stats` - Get statistics
+
 ## Features
 
 - 🔍 **Web Scraping**: Automatically scrape clinic data from beauty.hotpepper.jp
@@ -280,6 +301,90 @@ pip install langchain langchain-openai openai chromadb deep-translator
 Then set your OpenAI API key in `.env`:
 ```
 OPENAI_API_KEY=your_key_here
+```
+
+## 🚀 Cloud Deployment
+
+### Deploying to Google Cloud Run
+
+PROJECT BEAUTY can be easily deployed to Google Cloud Run. The application is configured to work with Cloud Run out of the box with the `main.py` entrypoint.
+
+#### Prerequisites
+
+1. Install the [Google Cloud SDK](https://cloud.google.com/sdk/docs/install)
+2. Authenticate with Google Cloud:
+   ```bash
+   gcloud auth login
+   gcloud config set project YOUR_PROJECT_ID
+   ```
+
+#### Deploy with Cloud Build
+
+```bash
+# Deploy to Cloud Run
+gcloud run deploy beauty-advisor \
+  --source . \
+  --platform managed \
+  --region us-central1 \
+  --allow-unauthenticated \
+  --set-env-vars OPENAI_API_KEY=your_api_key_here
+```
+
+#### Environment Variables
+
+Set these environment variables during deployment:
+
+- `OPENAI_API_KEY` - Your OpenAI API key (optional, but recommended for full AI features)
+- `PORT` - Port number (automatically set by Cloud Run, defaults to 8080)
+- `GCS_BUCKET_NAME` - Google Cloud Storage bucket name (optional)
+- `GCP_PROJECT_ID` - Google Cloud Project ID (optional)
+
+#### Using Dockerfile (Optional)
+
+You can also create a `Dockerfile` for custom builds:
+
+```dockerfile
+FROM python:3.11-slim
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+CMD exec python main.py
+```
+
+Then build and deploy:
+
+```bash
+gcloud builds submit --tag gcr.io/YOUR_PROJECT_ID/beauty-advisor
+gcloud run deploy beauty-advisor \
+  --image gcr.io/YOUR_PROJECT_ID/beauty-advisor \
+  --platform managed \
+  --region us-central1 \
+  --allow-unauthenticated
+```
+
+#### Testing the Deployed Service
+
+Once deployed, test your service:
+
+```bash
+# Get the service URL
+SERVICE_URL=$(gcloud run services describe beauty-advisor --format='value(status.url)')
+
+# Test health check
+curl $SERVICE_URL/health
+
+# Test API
+curl $SERVICE_URL/api/stats
+
+# Test chat endpoint
+curl -X POST $SERVICE_URL/api/chat \
+  -H "Content-Type: application/json" \
+  -d '{"message": "Find me a salon in Tokyo"}'
 ```
 
 ## Disclaimer
