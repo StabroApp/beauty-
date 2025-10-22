@@ -2,8 +2,15 @@
 import os
 
 # Worker configuration
-workers = int(os.getenv("WORKERS", 1))
-threads = int(os.getenv("THREADS", 2))
+def get_int_env(var_name, default):
+    value = os.getenv(var_name, str(default))
+    try:
+        return int(value)
+    except ValueError:
+        raise RuntimeError(f"Invalid value for {var_name}: '{value}'. Must be an integer.")
+
+workers = get_int_env("WORKERS", 1)
+threads = get_int_env("THREADS", 2)
 worker_class = "gthread"
 
 # Bind configuration
