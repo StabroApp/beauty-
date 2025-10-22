@@ -9,13 +9,18 @@ Provides REST API for the AI Beauty Advisor.
 import os
 import sys
 import json
+import logging
 from flask import Flask, request, jsonify
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 try:
     from dotenv import load_dotenv
     load_dotenv()
 except ImportError:
-    print("Note: python-dotenv not installed. Using environment variables directly.")
+    logger.info("Note: python-dotenv not installed. Using environment variables directly.")
 
 from advisor.advisor_agent import BeautyAdvisor
 from scraper.data_processor import DataProcessor
@@ -68,9 +73,10 @@ def health():
             "clinics_loaded": clinic_count
         }), 200
     except Exception as e:
+        logger.error(f"Health check failed: {e}", exc_info=True)
         return jsonify({
             "status": "unhealthy",
-            "error": str(e)
+            "error": "Service is not available"
         }), 500
 
 
@@ -96,8 +102,9 @@ def chat():
         }), 200
         
     except Exception as e:
+        logger.error(f"Chat endpoint error: {e}", exc_info=True)
         return jsonify({
-            "error": str(e)
+            "error": "Failed to process chat request"
         }), 500
 
 
@@ -115,8 +122,9 @@ def get_clinics():
         }), 200
         
     except Exception as e:
+        logger.error(f"Get clinics endpoint error: {e}", exc_info=True)
         return jsonify({
-            "error": str(e)
+            "error": "Failed to retrieve clinics"
         }), 500
 
 
@@ -141,8 +149,9 @@ def search_clinics():
         }), 200
         
     except Exception as e:
+        logger.error(f"Search clinics endpoint error: {e}", exc_info=True)
         return jsonify({
-            "error": str(e)
+            "error": "Failed to search clinics"
         }), 500
 
 
@@ -163,8 +172,9 @@ def get_top_clinics():
         }), 200
         
     except Exception as e:
+        logger.error(f"Get top clinics endpoint error: {e}", exc_info=True)
         return jsonify({
-            "error": str(e)
+            "error": "Failed to retrieve top-rated clinics"
         }), 500
 
 
@@ -179,8 +189,9 @@ def get_stats():
         return jsonify(stats), 200
         
     except Exception as e:
+        logger.error(f"Get stats endpoint error: {e}", exc_info=True)
         return jsonify({
-            "error": str(e)
+            "error": "Failed to retrieve statistics"
         }), 500
 
 
