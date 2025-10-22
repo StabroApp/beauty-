@@ -1,0 +1,152 @@
+[
+  {
+    "id": "salon_tokyo_1",
+    "name": "Shibuya Beauty Salon 1",
+    "name_japanese": "ShibuyaビューティーSalon1",
+    "category": "salon",
+    "location": "tokyo",
+    "area": "Shibuya",
+    "address": "1-2-3 Shibuya, Tokyo",
+    "address_japanese": "TokyoShibuya1-2-3",
+    "phone": "03-1000-2000",
+    "rating": 4.0,
+    "review_count": 50,
+    "price_range": "¥3000 - ¥8000",
+    "services": [
+      "Hair Cut",
+      "Hair Color",
+      "Perm"
+    ],
+    "description": "A premium salon in Shibuya, offering top-quality services with experienced staff.",
+    "description_japanese": "Shibuyaにあるプレミアムsalonサロン。経験豊富なスタッフが最高品質のサービスを提供します。",
+    "opening_hours": "10:00 - 20:00",
+    "website": "https://beauty.hotpepper.jp/slnH000100000/",
+    "features": [
+      "English speaking staff",
+      "Credit card accepted",
+      "Online booking available",
+      "Private rooms available"
+    ],
+    "access": "2 min walk from Shibuya Station"
+  },
+  {
+    "id": "salon_tokyo_2",
+    "name": "Shinjuku Beauty Salon 2",
+    "name_japanese": "ShinjukuビューティーSalon2",
+    "category": "salon",
+    "location": "tokyo",
+    "area": "Shinjuku",
+    "address": "2-3-4 Shinjuku, Tokyo",
+    "address_japanese": "TokyoShinjuku2-3-4",
+    "phone": "03-1111-2222",
+    "rating": 4.2,
+    "review_count": 75,
+    "price_range": "¥4000 - ¥10000",
+    "services": [
+      "Hair Cut",
+      "Hair Color",
+      "Perm"
+    ],
+    "description": "A premium salon in Shinjuku, offering top-quality services with experienced staff.",
+    "description_japanese": "Shinjukuにあるプレミアムsalonサロン。経験豊富なスタッフが最高品質のサービスを提供します。",
+    "opening_hours": "10:00 - 20:00",
+    "website": "https://beauty.hotpepper.jp/slnH000100001/",
+    "features": [
+      "English speaking staff",
+      "Credit card accepted",
+      "Online booking available",
+      "Private rooms available"
+    ],
+    "access": "3 min walk from Shinjuku Station"
+  },
+  {
+    "id": "salon_tokyo_3",
+    "name": "Ginza Beauty Salon 3",
+    "name_japanese": "GinzaビューティーSalon3",
+    "category": "salon",
+    "location": "tokyo",
+    "area": "Ginza",
+    "address": "3-4-5 Ginza, Tokyo",
+    "address_japanese": "TokyoGinza3-4-5",
+    "phone": "03-1222-2444",
+    "rating": 4.4,
+    "review_count": 100,
+    "price_range": "¥5000 - ¥12000",
+    "services": [
+      "Hair Cut",
+      "Hair Color",
+      "Perm"
+    ],
+    "description": "A premium salon in Ginza, offering top-quality services with experienced staff.",
+    "description_japanese": "Ginzaにあるプレミアムsalonサロン。経験豊富なスタッフが最高品質のサービスを提供します。",
+    "opening_hours": "10:00 - 20:00",
+    "website": "https://beauty.hotpepper.jp/slnH000100002/",
+    "features": [
+      "English speaking staff",
+      "Credit card accepted",
+      "Online booking available",
+      "Private rooms available"
+    ],
+    "access": "4 min walk from Ginza Station"
+  },
+  {
+    "id": "salon_tokyo_4",
+    "name": "Harajuku Beauty Salon 4",
+    "name_japanese": "HarajukuビューティーSalon4",
+    "category": "salon",
+    "location": "tokyo",
+    "area": "Harajuku",
+    "address": "4-5-6 Harajuku, Tokyo",
+    "address_japanese": "TokyoHarajuku4-5-6",
+    "phone": "03-1333-2666",
+    "rating": 4.6,
+    "review_count": 125,
+    "price_range": "¥6000 - ¥14000",
+    "services": [
+      "Hair Cut",
+      "Hair Color",
+      "Perm"
+    ],
+    "description": "A premium salon in Harajuku, offering top-quality services with experienced staff.",
+    "description_japanese": "Harajukuにあるプレミアムsalonサロン。経験豊富なスタッフが最高品質のサービスを提供します。",
+    "opening_hours": "10:00 - 20:00",
+    "website": "https://beauty.hotpepper.jp/slnH000100003/",
+    "features": [
+      "English speaking staff",
+      "Credit card accepted",
+      "Online booking available",
+      "Private rooms available"
+    ],
+    "access": "5 min walk from Harajuku Station"
+  },
+  {
+    "id": "salon_tokyo_5",
+    "name": "Roppongi Beauty Salon 5",
+    "name_japanese": "RoppongiビューティーSalon5",
+    "category": "salon",
+    "location": "tokyo",
+    "area": "Roppongi",
+    "address": "5-6-7 Roppongi, Tokyo",
+    "address_japanese": "TokyoRoppongi5-6-7",
+    "phone": "03-1444-2888",
+    "rating": 4.8,
+    "review_count": 150,
+    "price_range": "¥7000 - ¥16000",
+    "services": [
+      "Hair Cut",
+      "Hair Color",
+      "Perm"
+    ],
+    "description": "A premium salon in Roppongi, offering top-quality services with experienced staff.",
+    "description_japanese": "Roppongiにあるプレミアムsalonサロン。経験豊富なスタッフが最高品質のサービスを提供します。",
+    "opening_hours": "10:00 - 20:00",
+    "website": "https://beauty.hotpepper.jp/slnH000100004/",
+    "features": [
+      "English speaking staff",
+      "Credit card accepted",
+      "Online booking available",
+      "Private rooms available"
+    ],
+    "access": "6 min walk from Roppongi Station"
+  }
+]
